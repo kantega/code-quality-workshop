@@ -5,7 +5,7 @@ import java.util.*;
 import static java.lang.Math.*;
 
 
-public final class SmallExercises {
+public final class Exercises {
   // EXERCISE A
   // -------------------------------------------------------------------------
   //
