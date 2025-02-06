@@ -44,7 +44,7 @@ public class ExercisesTest {
     );
   }
 
-  @Test
+ @Test
   public void testDescribeNumber() {
     assertEquals("HUGE!", Exercises.describeNumber(20001));
     assertEquals("HUGE!", Exercises.describeNumber(20000));
@@ -54,9 +54,9 @@ public class ExercisesTest {
     assertEquals("decently sized", Exercises.describeNumber(9999));
     assertEquals("decently sized", Exercises.describeNumber(0));
     assertEquals("decently sized", Exercises.describeNumber(-9999));
-    assertEquals("very !", Exercises.describeNumber(-10000));
-    assertEquals("very !", Exercises.describeNumber(-10001));
-    assertEquals("very !", Exercises.describeNumber(-19999));
+    assertEquals("very small!", Exercises.describeNumber(-10000));
+    assertEquals("very small!", Exercises.describeNumber(-10001));
+    assertEquals("very small!", Exercises.describeNumber(-19999));
     assertEquals("TINY!", Exercises.describeNumber(-20000));
     assertEquals("TINY!", Exercises.describeNumber(-20001));
   }
