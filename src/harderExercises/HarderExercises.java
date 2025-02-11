@@ -2,6 +2,7 @@ package harderExercises;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -144,6 +145,23 @@ public class HarderExercises {
             .map(e -> e.name().toUpperCase())
             .distinct()
             .collect(Collectors.toList());
+    }
+
+    // Exercise Æ
+    private final Map<String, String> users = Map.of("alice", "password123", "bob", "securepass");
+
+    public boolean isValidUser(String username, String password) {
+        try {
+            if (!users.containsKey(username)) {
+                throw new Exception("User not found");
+            }
+            if (!users.get(username).equals(password)) {
+                throw new Exception("Invalid password");
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 
