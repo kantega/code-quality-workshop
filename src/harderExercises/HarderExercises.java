@@ -1,5 +1,10 @@
 package harderExercises;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 import static java.lang.Math.*;
 import static java.lang.Math.toRadians;
 
@@ -112,4 +117,36 @@ public class HarderExercises {
 
         return res;
     }
+
+    // EXERCISE K
+    // -------------------------------------------------------------------------
+    //
+    // [HARDER exercise]
+    //
+    // The method below does a lot of things, and it is very hard to understand.
+    // Consider removing some lines of code that does not affect the final result.
+    // Create some smaller methods with descriptive names that make the method
+    // easier to understand. Consider creating a new method name.
+    //
+    public record Employee( String name, int salary, boolean active, String department){}
+
+    public static List<String> getTopEmployees(List<Employee> employees) {
+        return employees.stream()
+            .filter(e -> e.name != null)
+            .sorted(Comparator.comparing(e -> e.name))
+            .collect(Collectors.groupingBy(Employee::department))
+            .values()
+            .stream().flatMap(List::stream)
+            .filter(e -> e != null && e.active())
+            .sorted((e1, e2) -> Double.compare(e2.salary(), e1.salary()))
+            .limit(5)
+            .filter(e -> e.name() != null)
+            .map(e -> e.name().toUpperCase())
+            .distinct()
+            .collect(Collectors.toList());
+    }
+
+
+
+
 }

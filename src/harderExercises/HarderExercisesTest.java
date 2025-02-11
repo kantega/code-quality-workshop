@@ -1,6 +1,8 @@
 package harderExercises;
 
 import org.junit.Test;
+
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.*;
@@ -99,5 +101,35 @@ public class HarderExercisesTest {
         }
       }
     }
+  }
+
+  @Test
+  public void testGetTopPaidActiveHarderExercises() {
+    List<HarderExercises.Employee> employees = List.of(
+        new HarderExercises.Employee("Alice", 60000, true, "1"),
+        new HarderExercises.Employee("Bob", 55000, true, "1"),
+        new HarderExercises.Employee("Charlie", 70000, false, "1"), // Inactive
+        new HarderExercises.Employee("Dave", 80000, true, "1"),
+        new HarderExercises.Employee("Eve", 90000, true, "1"),
+        new HarderExercises.Employee("Frank", 75000, true, "1"),
+        new HarderExercises.Employee("Grace", 65000, true, "1")
+    );
+
+    List<String> result = HarderExercises.getTopEmployees(employees);
+    assertEquals(List.of("EVE", "DAVE", "FRANK",  "GRACE","ALICE"), result);
+  }
+
+  @Test
+  public void testHandlesNullAndDuplicates() {
+    List<HarderExercises.Employee> employees = List.of(
+        new HarderExercises.Employee("Alice", 60000, true, "1"),
+        new HarderExercises.Employee("Bob", 55000, true, "1"),
+        new HarderExercises.Employee("Alice", 60000, true, "1"), // Duplicate name
+        new HarderExercises.Employee(null, 70000, true, "1"), // Null name
+        new HarderExercises.Employee("Eve", 90000, true, "1")
+    );
+
+    List<String> result = HarderExercises.getTopEmployees(employees);
+    assertEquals(List.of("EVE", "ALICE", "BOB"), result);
   }
 }
