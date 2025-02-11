@@ -1,6 +1,5 @@
 package harderExercises;
 
-import exercises.Exercises;
 import org.junit.Test;
 import java.util.Map;
 
