@@ -1,3 +1,6 @@
+# Idea folder
+.idea
+
 # Compiled class file
 *.class
 
@@ -13,6 +16,9 @@
 # Gradle cache
 .gradle/
 
+# VS Code settings
+.vscode/settings.json
+
 # Package Files #
 *.war
 *.nar
@@ -23,4 +29,3 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-.idea
