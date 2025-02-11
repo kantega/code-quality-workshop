@@ -1,0 +1,8 @@
+harderExercises/HarderExercisesTest.java
+ harderExercises.HarderExercisesTest
+exercises/Exercises.java
+ exercises.Exercises
+exercises/ExercisesTest.java
+ exercises.ExercisesTest
+harderExercises/HarderExercises.java
+ harderExercises.HarderExercises
