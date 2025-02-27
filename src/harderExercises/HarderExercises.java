@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 import static java.lang.Math.*;
 import static java.lang.Math.toRadians;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class HarderExercises {
 
     /*
@@ -165,6 +168,50 @@ public class HarderExercises {
     }
 
 
+    // EXERCISE X: Receipt Calculator
+    // -------------------------------------------------------------------------
+    //
+    // [HARDER exercise]
+    //
+    // The method below calculates a receipt summary for a shopping cart.
+    // It takes a list of items with their prices and quantities, applies
+    // discounts, and calculates totals. While it works, the code is messy
+    // and hard to maintain.
+    //
+    // Your tasks are:
+    // - Split the logic into meaningful methods
+    // - Make the code more readable while maintaining exact functionality
+    // - Consider using streams where appropriate
+    //
 
+    public static String calculateReceipt(String[] items, double[] prices, int[] qty) {
+        if(items == null || prices == null || qty == null ||
+            items.length != prices.length || prices.length != qty.length) return "ERROR";
+
+        int totalItemsCount = 0;
+        String maxItem = "";
+        double maxItemTotal = 0;
+
+        for(int i = 0; i < items.length; i++) {
+            double sum = prices[i] * qty[i];
+            if(qty[i] >= 3) sum *= 0.9;
+            if(sum > maxItemTotal) {
+                maxItemTotal = sum;
+                maxItem = items[i];
+            }
+            totalItemsCount += qty[i];
+        }
+
+        double totalItemsPrice = 0;
+        for(int i = 0; i < items.length; i++) {
+            double sum = prices[i] * qty[i];
+            if(qty[i] >= 3) sum *= 0.9;
+            totalItemsPrice += sum;
+        }
+
+        return Math.round(totalItemsPrice * 100.0) / 100.0 + "," +
+            totalItemsCount + "," +
+            maxItem;
+    }
 
 }
