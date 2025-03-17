@@ -231,7 +231,7 @@ public class HarderExercises {
             : (membershipLevel.equals("Silver")
             ? (isHoliday ? 10.0 : 5.0)
             : (membershipLevel.equals("Bronze")
-            ? (isHoliday ? 7.0 : 3.0)
+            ? (isHoliday ? 8.0 : 3.0)
             : (isHoliday ? 5.0 : 0.0)));
     }
 

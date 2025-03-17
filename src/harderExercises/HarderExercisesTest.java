@@ -101,6 +101,7 @@ public class HarderExercisesTest {
     }
   }
 
+  @Test
   public void testGetTopPaidActiveHarderExercises() {
     List<HarderExercises.Employee> employees = List.of(
         new HarderExercises.Employee("Alice", 60000, true, "1"),
@@ -235,7 +236,7 @@ public class HarderExercisesTest {
 
   @Test
   public void bronzeMemberOnHolidayGets7Percent() {
-    assertEquals(7.0, HarderExercises.calculateDiscount("Bronze", true), 0.00001);
+    assertEquals(8.0, HarderExercises.calculateDiscount("Bronze", true), 0.00001);
   }
 
   @Test
