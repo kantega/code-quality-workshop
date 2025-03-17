@@ -215,4 +215,24 @@ public class HarderExercises {
             maxItem;
     }
 
+    // Exercise N
+    // -------------------------------------------------------------------------
+    //
+    // [HARDER exercise]
+    //
+    // The method below uses nested ternary operators
+    // If the argument it validates is true, it returns the value after the "?"
+    // if it is false it returns the value after the ":".
+    // Nesting the ternary operators like this makes the method
+    // very hard to read. Refactor the method.
+    public static double calculateDiscount(String membershipLevel, boolean isHoliday) {
+        return membershipLevel.equals("Gold")
+            ? (isHoliday ? 20.0 : 15.0)
+            : (membershipLevel.equals("Silver")
+            ? (isHoliday ? 10.0 : 5.0)
+            : (membershipLevel.equals("Bronze")
+            ? (isHoliday ? 7.0 : 3.0)
+            : (isHoliday ? 5.0 : 0.0)));
+    }
+
 }

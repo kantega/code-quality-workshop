@@ -1,12 +1,8 @@
 package harderExercises;
 
 import org.junit.Test;
-
-import exercises.Exercises;
-
 import java.util.List;
 import java.util.Map;
-
 import static org.junit.Assert.*;
 
 public class HarderExercisesTest {
@@ -143,6 +139,7 @@ public class HarderExercisesTest {
   public void invalidUserReturnsFalse() {
     assertFalse(HarderExercises.isValidUser("charlie", "randompass"));
   }
+
   /*
   @Test
   public void testIsLeapYear() {
@@ -176,7 +173,6 @@ public class HarderExercisesTest {
             new double[]{1.0, 0.5},
             new int[]{3, 2}
         )
-
     );
   }
 
@@ -225,5 +221,30 @@ public class HarderExercisesTest {
     // Check highest value item
     String maxItem = parts[2];
     assertEquals("Should be the most expensive item", maxItem, "Expensive");
+  }
+
+  @Test
+  public void goldMemberOnHolidayGets20Percent() {
+    assertEquals(20.0, HarderExercises.calculateDiscount("Gold", true), 0.00001);
+  }
+
+  @Test
+  public void silverMemberNotOnHolidayGets5Percent() {
+    assertEquals(5.0, HarderExercises.calculateDiscount("Silver", false), 0.00001);
+  }
+
+  @Test
+  public void bronzeMemberOnHolidayGets7Percent() {
+    assertEquals(7.0, HarderExercises.calculateDiscount("Bronze", true), 0.00001);
+  }
+
+  @Test
+  public void regularCustomerOnHolidayGets5Percent() {
+    assertEquals(5.0, HarderExercises.calculateDiscount("Regular", true), 0.00001);
+  }
+
+  @Test
+  public void bronzeMemberNotOnHolidayGets3Percent() {
+    assertEquals(3.0, HarderExercises.calculateDiscount("Bronze", false), 0.00001);
   }
 }
