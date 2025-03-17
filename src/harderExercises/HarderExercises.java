@@ -132,20 +132,32 @@ public class HarderExercises {
     // Create some smaller methods with descriptive names that make the method
     // easier to understand. Consider creating a new method name.
     //
-    public record Employee( String name, int salary, boolean active, String department){}
+    public static class Employee{
+        String name;
+        int salary;
+        boolean active;
+        String department;
+
+        public Employee(String name, int salary, boolean active, String department){
+            this.name = name;
+            this.salary = salary;
+            this.active = active;
+            this.department = department;
+        }
+    }
 
     public static List<String> getTopEmployees(List<Employee> employees) {
         return employees.stream()
             .filter(e -> e.name != null)
             .sorted(Comparator.comparing(e -> e.name))
-            .collect(Collectors.groupingBy(Employee::department))
+            .collect(Collectors.groupingBy(e -> e.department))
             .values()
             .stream().flatMap(List::stream)
-            .filter(e -> e != null && e.active())
-            .sorted((e1, e2) -> Double.compare(e2.salary(), e1.salary()))
+            .filter(e -> e != null && e.active)
+            .sorted((e1, e2) -> Double.compare(e2.salary, e1.salary))
             .limit(5)
-            .filter(e -> e.name() != null)
-            .map(e -> e.name().toUpperCase())
+            .filter(e -> e.name != null)
+            .map(e -> e.name.toUpperCase())
             .distinct()
             .collect(Collectors.toList());
     }
