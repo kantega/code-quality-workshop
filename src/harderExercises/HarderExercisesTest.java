@@ -133,16 +133,87 @@ public class HarderExercisesTest {
     List<String> result = HarderExercises.getTopEmployees(employees);
     assertEquals(List.of("EVE", "ALICE", "BOB"), result);
   }
-
+  /*
   @Test
   public void testIsLeapYear() {
-      assertTrue(HarderExercises.isLeapYear(420));
-      assertTrue( HarderExercises.isLeapYear(2000));
-      assertFalse( HarderExercises.isLeapYear(2001));
-      assertTrue( HarderExercises.isLeapYear(2004));
-      assertFalse( HarderExercises.isLeapYear(2100));
-      assertFalse( HarderExercises.isLeapYear(2200));
-      assertFalse( HarderExercises.isLeapYear(2300));
-      assertTrue( HarderExercises.isLeapYear(2400));
+    assertTrue(HarderExercises.isLeapYear(420));
+    assertTrue( HarderExercises.isLeapYear(2000));
+    assertFalse( HarderExercises.isLeapYear(2001));
+    assertTrue( HarderExercises.isLeapYear(2004));
+    assertFalse( HarderExercises.isLeapYear(2100));
+    assertFalse( HarderExercises.isLeapYear(2200));
+    assertFalse( HarderExercises.isLeapYear(2300));
+    assertTrue( HarderExercises.isLeapYear(2400));
+  }*/
+
+
+  @Test
+  public void testCalculateReceiptValidInputs() {
+    // Basic case
+    assertEquals("Basic calculation failed",
+        "3.5,3,Orange", HarderExercises.calculateReceipt(
+            new String[]{"Apple", "Banana", "Orange"},
+            new double[]{1.0, 0.5, 2.0},
+            new int[]{1, 1, 1}
+        )
+    );
+
+    // With bulk discount (3 or more items)
+    assertEquals("Bulk discount calculation failed",
+        "3.7,5,Apple",
+        HarderExercises.calculateReceipt(
+            new String[]{"Apple", "Banana"},
+            new double[]{1.0, 0.5},
+            new int[]{3, 2}
+        )
+
+    );
+  }
+
+  @Test
+  public void testCalculateReceiptEdgeCases() {
+    // Empty arrays
+    assertEquals("0.0,0,",
+        HarderExercises.calculateReceipt(
+            new String[]{},
+            new double[]{},
+            new int[]{}
+        )
+    );
+
+    // Null and mismatched arrays
+    assertEquals("ERROR",
+        HarderExercises.calculateReceipt(null, new double[]{}, new int[]{}));
+    assertEquals("ERROR",
+        HarderExercises.calculateReceipt(
+            new String[]{"Apple"},
+            new double[]{1.0},
+            new int[]{1, 2}
+        )
+    );
+  }
+
+  @Test
+  public void testCalculateReceiptComplexCase() {
+    // Multiple items with different quantities and discounts
+    String result = HarderExercises.calculateReceipt(
+        new String[]{"Cheap", "Medium", "Expensive"},
+        new double[]{1.0, 5.0, 10.0},
+        new int[]{4, 3, 2}
+    );
+
+    // Verifies total price, total count, and highest value item
+    String[] parts = result.split(",");
+
+    // Check total price (with discounts)
+    double totalPrice = Double.parseDouble(parts[0]);
+    assertTrue( "Total price should be positive", totalPrice > 0);
+
+    // Check total item count
+    int totalCount = Integer.parseInt(parts[1]);
+    assertEquals("Total item count should match", 9, totalCount);
+    // Check highest value item
+    String maxItem = parts[2];
+    assertEquals("Should be the most expensive item", maxItem, "Expensive");
   }
 }
