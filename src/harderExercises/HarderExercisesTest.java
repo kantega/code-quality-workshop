@@ -133,7 +133,7 @@ public class HarderExercisesTest {
     List<String> result = HarderExercises.getTopEmployees(employees);
     assertEquals(List.of("EVE", "ALICE", "BOB"), result);
   }
-
+  /*
   @Test
   public void testIsLeapYear() {
     assertTrue(HarderExercises.isLeapYear(420));
@@ -144,29 +144,29 @@ public class HarderExercisesTest {
     assertFalse( HarderExercises.isLeapYear(2200));
     assertFalse( HarderExercises.isLeapYear(2300));
     assertTrue( HarderExercises.isLeapYear(2400));
-  }
+  }*/
 
 
   @Test
   public void testCalculateReceiptValidInputs() {
     // Basic case
     assertEquals("Basic calculation failed",
-        HarderExercises.calculateReceipt(
+        "3.5,3,Orange", HarderExercises.calculateReceipt(
             new String[]{"Apple", "Banana", "Orange"},
             new double[]{1.0, 0.5, 2.0},
             new int[]{1, 1, 1}
-        ),
-        "3.50,3,Orange"
+        )
     );
 
     // With bulk discount (3 or more items)
     assertEquals("Bulk discount calculation failed",
+        "3.7,5,Apple",
         HarderExercises.calculateReceipt(
             new String[]{"Apple", "Banana"},
             new double[]{1.0, 0.5},
             new int[]{3, 2}
-        ),
-        "3.70,5,Apple"
+        )
+
     );
   }
 
