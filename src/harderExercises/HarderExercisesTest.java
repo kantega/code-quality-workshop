@@ -133,6 +133,16 @@ public class HarderExercisesTest {
     List<String> result = HarderExercises.getTopEmployees(employees);
     assertEquals(List.of("EVE", "ALICE", "BOB"), result);
   }
+
+  @Test
+  public void validUserReturnsTrue() {
+    assertTrue(HarderExercises.isValidUser("alice", "password123"));
+  }
+
+  @Test
+  public void invalidUserReturnsFalse() {
+    assertFalse(HarderExercises.isValidUser("charlie", "randompass"));
+  }
   /*
   @Test
   public void testIsLeapYear() {

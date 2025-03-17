@@ -150,10 +150,11 @@ public class HarderExercises {
             .collect(Collectors.toList());
     }
 
-    // Exercise Æ
-    private final Map<String, String> users = Map.of("alice", "password123", "bob", "securepass");
+    // Exercise L
 
-    public boolean isValidUser(String username, String password) {
+    public static boolean isValidUser(String username, String password) {
+        final Map<String, String> users = Map.of("alice", "password123", "bob", "securepass");
+
         try {
             if (!users.containsKey(username)) {
                 throw new Exception("User not found");
@@ -168,7 +169,7 @@ public class HarderExercises {
     }
 
 
-    // EXERCISE X: Receipt Calculator
+    // EXERCISE M: Receipt Calculator
     // -------------------------------------------------------------------------
     //
     // [HARDER exercise]
