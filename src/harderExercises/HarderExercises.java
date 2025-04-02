@@ -154,7 +154,11 @@ public class HarderExercises {
     }
 
     // Exercise L
-
+    // -------------------------------------------------------------------------
+    //
+    // The method below uses thrown exceptions as a part of its data flow
+    // which is seen as a code smell. Refactor the method to avoid this code smell.
+    //
     public static boolean isValidUser(String username, String password) {
         final Map<String, String> users = Map.of("alice", "password123", "bob", "securepass");
 
