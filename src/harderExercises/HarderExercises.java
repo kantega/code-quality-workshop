@@ -146,8 +146,8 @@ public class HarderExercises {
             .stream().flatMap(List::stream)
             .filter(e -> e != null && e.active)
             .sorted((e1, e2) -> Double.compare(e2.salary, e1.salary))
-            .limit(5)
             .filter(e -> e.name != null)
+            .limit(5)
             .map(e -> e.name.toUpperCase())
             .distinct()
             .collect(Collectors.toList());
