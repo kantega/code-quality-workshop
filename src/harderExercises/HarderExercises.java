@@ -185,6 +185,10 @@ public class HarderExercises {
     // It takes a list of items with their prices and quantities, applies
     // discounts, and calculates totals. While it works, the code is messy
     // and hard to maintain.
+    // The method should return a string on the form "a,b,c"
+    // where a = total of the items, with an eventual bulk discount
+    // b = the total amount of items
+    // c = the item that was purchased the most
     //
     // Your tasks are:
     // - Split the logic into meaningful methods
